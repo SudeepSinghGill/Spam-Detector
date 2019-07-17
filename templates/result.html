@@ -1,0 +1,16 @@
+<html>
+    <head>
+        <title>Result Page</title>
+        <link rel="stylesheet" type="text/css" href="{{ url_for('static',filename='styles/style2.css') }}">
+        <link href="https://fonts.googleapis.com/css?family=Courgette&display=swap" rel="stylesheet"> 
+    </head>
+    <body>
+        {% if pred == 1%}
+        <h1 class = "Danger">This is Spam !!!</h1>
+        <img src="{{ url_for('static',filename='images/nospam.gif' ) }}"  class="setResult"/>
+        {% elif pred == 0%}
+        <h1 class = "safe">Not a Spam, You are good to go!</h1>
+        <img src="{{ url_for('static',filename='images/Safe.png' ) }}"  class="setResult"/>
+        {% endif %}
+    </body>
+</html>

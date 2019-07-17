@@ -1,0 +1,24 @@
+<html>
+    <head>
+        <title>Spam Detector</title>
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+        <link rel="stylesheet" type="text/css" href="{{ url_for('static',filename='styles/style.css') }}">
+        <link href="https://fonts.googleapis.com/css?family=Courgette&display=swap" rel="stylesheet"> 
+        <link href="https://fonts.googleapis.com/css?family=Raleway" rel="stylesheet"> 
+    </head>
+    <body>
+        <h1>Spam Detector</h1>
+        <br/>
+        <p>Have you noticed your inbox being flooded with emails from unknown persons lately? 
+            Do you open these emails or delete them immediately?
+             Are you wondering whether the email is a legitimate one?</p>
+        <h3><b><center>Check it Now with our Spam Detector</center></b></h3>
+        <form action = "/getInput" method = "POST"> 
+            <input type = "text" class = "form-control field" name = "Data" 
+            placeholder="Enter your Message Here" required/>
+            <input type="submit" name="submit" value="Analyze" class="btn btn-primary centerAlign" />
+            <br/>
+            <img src="{{ url_for('static',filename='images/StopSpam.png' ) }}"  class="setImage"/>
+        </form>
+    </body>
+</html>

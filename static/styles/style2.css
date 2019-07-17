@@ -1,0 +1,23 @@
+.Danger{
+
+    text-align: center;
+    color: red;
+}
+
+.safe{
+    text-align: center;
+    color:green;
+}
+
+.setResult{
+    margin-left: 520px;
+    margin-top: 40px;
+    width: 25%;
+    height: 45%;
+}
+
+h1{
+    text-align: center; 
+    font-family: 'Courgette', cursive;
+    font-size: 60px;
+}
