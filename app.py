@@ -10,6 +10,10 @@ import pandas as pd
 import matplotlib.pyplot as plt
 import numpy as np 
 import pickle
+import re
+from nltk.corpus import stopwords
+from nltk.stem.porter import PorterStemmer
+ps = PorterStemmer()
 
 classifier = pickle.load(open('model.pkl', 'rb'))
 cv = pickle.load(open('cv.pkl', 'rb'))
@@ -24,6 +28,12 @@ def index():
 def getInput():
     if request.method == 'POST':
         data = request.form['Data']
+        data = re.sub('[^a-zA-Z]',' ',data)
+        data = data.lower()
+        data = data.split()
+        data = [ps.stem(word ) for word in data if not word in 
+                      set(stopwords.words('English'))]
+        data = ' '.join(data)
         data = [data]
         vec = cv.transform(data).toarray()
         prediction = classifier.predict(vec)

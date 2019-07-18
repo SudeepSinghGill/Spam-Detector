@@ -53,8 +53,8 @@ from sklearn.model_selection import train_test_split
 X_train, X_test, y_train, y_test = train_test_split(X, y, test_size = 0.2)
 
 ## Fitting Naive Bayes to the Training Set
-from sklearn.naive_bayes import GaussianNB
-classifier = GaussianNB()
+from sklearn.naive_bayes import MultinomialNB
+classifier = MultinomialNB()
 classifier.fit(X_train, y_train)
 
 pickle.dump(classifier, open('model.pkl', 'wb'))
@@ -64,7 +64,14 @@ classifier = pickle.load(open('model.pkl', 'rb'))
 cv = pickle.load(open('cv.pkl', 'rb'))
 ## Predicting Test set results
 y_pred = classifier.predict(X_test)
-comment = ['Hey! How are you ?']
+comment = 'Hey! How are you ?'
+comment = re.sub('[^a-zA-Z]',' ',comment)
+comment = comment.lower()
+comment = comment.split()
+comment = [ps.stem(word ) for word in comment if not word in 
+              set(stopwords.words('English'))]
+comment = ' '.join(comment)
+comment = [comment]
 vec = cv.transform(comment).toarray()
 singlePred = classifier.predict(vec)
 
